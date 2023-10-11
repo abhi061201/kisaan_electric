@@ -31,11 +31,6 @@ class _login_viewState extends State<login_view> {
               image: AssetImage('assets/rectangle.png'), fit: BoxFit.fill),
         ),
         child: Scaffold(
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              Get.to(reset_password());
-            },
-          ),
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
             child: Column(
@@ -44,9 +39,11 @@ class _login_viewState extends State<login_view> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10,),
                       width: Get.width * 0.35,
+                      height: Get.height * 0.04,
                       decoration: BoxDecoration(
-                        color: Color(0xffD9D9D9),
+                        color: Colors.transparent,
                         borderRadius: BorderRadius.circular(5),
                         border: Border.all(
                           color: Color(
@@ -54,14 +51,13 @@ class _login_viewState extends State<login_view> {
                           ),
                         ),
                       ),
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                       child: DropdownButtonFormField(
                         decoration: InputDecoration.collapsed(
                           hintText: 'Language',
                           hintStyle: TextStyle(
                             color: Colors.black,
-                            fontSize: 24,
-                            // height: 2.5,
+                            fontSize: 22,
+                            height: 1,
                           ),
                         ),
                         value: value,
@@ -174,41 +170,51 @@ class _login_viewState extends State<login_view> {
                 SizedBox(
                   height: 10,
                 ),
-                customtextformfield(
-                  hinttext: 'Mobile Number',
-                  suffixIcon: Icon(Icons.call),
-                  newIcon: Icon(Icons.call),
-                  key_type: TextInputType.phone,
-                  maxLength: 10,
-                ),
-                customtextformfield(
-                    hinttext: 'Password',
-                    suffixIcon: Icon(Icons.lock),
-                    newIcon: Icon(
-                      Icons.lock_open,
-                    ),
-                    showPassword: !controller.showPassword.value,
-                    key_type: TextInputType.visiblePassword,
-                    callback: () {
-                      controller.showPassword.value =
-                          !controller.showPassword.value;
-
-                      setState(() {});
-                    }),
-                blockButton(
-                  callback: () {
-                    Get.to(Home_view());
-                  },
-                  width: Get.width * 0.35,
-                  widget: Text(
-                    'Login',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        height: 1.2),
+                Container(
+                  height: Get.height * 0.055,
+                  child: customtextformfield(
+                    hinttext: 'Mobile Number',
+                    suffixIcon: Icon(Icons.call),
+                    newIcon: Icon(Icons.call),
+                    key_type: TextInputType.phone,
+                    maxLength: 10,
                   ),
-                  verticalPadding: 6,
+                ),
+                Container(
+                  height: Get.height * 0.055,
+                  child: customtextformfield(
+                      hinttext: 'Password',
+                      suffixIcon: Icon(Icons.lock),
+                      newIcon: Icon(
+                        Icons.lock_open,
+                      ),
+                      showPassword: !controller.showPassword.value,
+                      key_type: TextInputType.visiblePassword,
+                      callback: () {
+                        controller.showPassword.value =
+                            !controller.showPassword.value;
+
+                        setState(() {});
+                      }),
+                ),
+                Container(
+                  height: Get.height*0.055,
+                  child: blockButton(
+                    callback: () {
+                      Get.to(Home_view());
+                    },
+                    width: Get.width * 0.3,
+                    
+                    widget: Text(
+                      'Login',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                          height: 1.2),
+                    ),
+                    verticalPadding:3 ,
+                  ),
                 ),
                 InkWell(
                   onTap: () {

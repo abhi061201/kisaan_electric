@@ -10,6 +10,8 @@ import 'package:kisaan_electric/global/custom_drawer.dart';
 import 'package:kisaan_electric/global/customtextformfield.dart';
 import 'package:kisaan_electric/global/gradient_text.dart';
 import 'package:kisaan_electric/QR/view/qr_scanner_view.dart';
+import 'package:kisaan_electric/global/socialMedia.dart';
+import 'package:kisaan_electric/products/view/product_view.dart';
 import 'package:kisaan_electric/profile/view/profile_view.dart';
 import 'package:kisaan_electric/wallet/view/wallet_view.dart';
 
@@ -85,7 +87,6 @@ class _Home_viewState extends State<Home_view> {
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
-          
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
             child: Column(
@@ -218,7 +219,7 @@ class _Home_viewState extends State<Home_view> {
                         customwidget(
                           assetimagepath: 'assets/Vector.png',
                           callback: () {
-                            // Get.to(profile_view());
+                            Get.to(profile_view());
                           },
                           title: 'My Profile',
                         ),
@@ -231,12 +232,16 @@ class _Home_viewState extends State<Home_view> {
                         ),
                         customwidget(
                           assetimagepath: 'assets/secured icon.png',
-                          callback: () {},
+                          callback: () {
+                            Get.to(product_view());
+                          },
                           title: 'My Products',
                         ),
                         customwidget(
                           assetimagepath: 'assets/Vector (2).png',
-                          callback: () {},
+                          callback: () {
+                            Get.to(socialMedia());
+                          },
                           title: 'Social Media',
                         ),
                       ],
@@ -345,10 +350,10 @@ class _Home_viewState extends State<Home_view> {
                     ),
                     blockButton(
                         width: Get.width * 0.4,
-                        verticalPadding: 4,
+                        verticalPadding: 0,
                         widget: Text(
                           'See More',
-                          style: TextStyle(color: Colors.white, fontSize: 24),
+                          style: TextStyle(color: Colors.white, fontSize: 22),
                         )).paddingOnly(
                       bottom: 20,
                     )

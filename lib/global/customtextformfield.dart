@@ -17,12 +17,15 @@ Widget customtextformfield({
   double? horizontalcontentPadding,
   double? verticalContentPadding,
   Gradient? gradient,
+  InputBorder? border,
+  bool ? enabled,
 }) {
   return Container(
     padding: EdgeInsets.symmetric(
       horizontal: 10,
     ),
     child: TextFormField(
+      enabled: enabled,
       cursorHeight: 28,
       cursorColor: hintTextColor == null ? appcolor.mixColor : hintTextColor,
       validator: validator,
@@ -67,11 +70,11 @@ Widget customtextformfield({
                 : bottomLineColor,
           ),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder:border==null? UnderlineInputBorder(
           borderSide: BorderSide(
             color: hintTextColor == null ? Color(0xff8e2b59) : hintTextColor,
           ),
-        ),
+        ):border,
         border: InputBorder.none,
       ),
     ),

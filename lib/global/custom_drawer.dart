@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kisaan_electric/History/History_view.dart';
 import 'package:kisaan_electric/QR/view/qr_scanner_view.dart';
+import 'package:kisaan_electric/auth/reset_password.dart';
+import 'package:kisaan_electric/global/aboutUsView.dart';
 import 'package:kisaan_electric/global/appcolor.dart';
 import 'package:kisaan_electric/global/gradient_text.dart';
+import 'package:kisaan_electric/global/language.dart';
+import 'package:kisaan_electric/global/legel.dart';
+import 'package:kisaan_electric/global/referandEarn.dart';
+import 'package:kisaan_electric/global/socialMedia.dart';
+import 'package:kisaan_electric/products/view/product_view.dart';
 import 'package:kisaan_electric/profile/view/profile_view.dart';
 import 'package:kisaan_electric/scheme/view/schemes_view.dart';
 import 'package:kisaan_electric/wallet/view/wallet_view.dart';
@@ -86,7 +94,6 @@ Widget customDrawer() {
             SizedBox(
               height: 10,
             ),
-            
             drawerWidget(
               callback: () {
                 Get.back();
@@ -99,7 +106,6 @@ Widget customDrawer() {
                 ),
               ),
             ),
-            
             drawerWidget(
               callback: () {
                 Get.back();
@@ -112,7 +118,6 @@ Widget customDrawer() {
                 ),
               ),
             ),
-            
             drawerWidget(
               callback: () {
                 Get.back();
@@ -126,11 +131,10 @@ Widget customDrawer() {
                 ),
               ),
             ),
-            
             drawerWidget(
               callback: () {
                 Get.back();
-                // Get.to(profile_view());
+                Get.to(profile_view());
               },
               title: 'My Profile',
               image: Container(
@@ -140,9 +144,11 @@ Widget customDrawer() {
                 ),
               ),
             ),
-           
             drawerWidget(
-              callback: () {},
+              callback: () {
+                Get.back();
+                Get.to(product_view());
+              },
               title: 'My Products',
               image: Container(
                 height: Get.height * 0.025,
@@ -151,7 +157,6 @@ Widget customDrawer() {
                 ),
               ),
             ),
-            
             drawerWidget(
               callback: () {},
               title: 'Orders',
@@ -162,9 +167,11 @@ Widget customDrawer() {
                 ),
               ),
             ),
-            
             drawerWidget(
-              callback: () {},
+              callback: () {
+                Get.back();
+                Get.to(historyView());
+              },
               title: 'History',
               image: Container(
                 child: Image(
@@ -173,7 +180,10 @@ Widget customDrawer() {
               ),
             ),
             drawerWidget(
-              callback: () {},
+              callback: () {
+                Get.back();
+                Get.to(socialMedia());
+              },
               title: 'Social Media',
               image: Container(
                 height: Get.height * 0.02,
@@ -183,8 +193,11 @@ Widget customDrawer() {
               ),
             ),
             drawerWidget(
-              callback: () {},
-              title: 'Rate Us',
+              callback: () {
+                Get.back();
+                Get.to(referandearn());
+              },
+              title: 'Refer & Earn',
               image: Container(
                 child: Image(
                   image: AssetImage('assets/share.png'),
@@ -193,6 +206,18 @@ Widget customDrawer() {
             ),
             drawerWidget(
               callback: () {},
+              title: 'Rate Us',
+              image: Container(
+                child: Image(
+                  image: AssetImage('assets/star__.png'),
+                ),
+              ),
+            ),
+            drawerWidget(
+              callback: () {
+                Get.back();
+                Get.to(aboutUs());
+              },
               title: 'About Us',
               image: Container(
                 child: Image(
@@ -228,7 +253,10 @@ Widget customDrawer() {
               ),
             ),
             drawerWidget(
-              callback: () {},
+              callback: () {
+                Get.back();
+                Get.to(legel_view());
+              },
               title: 'Legal',
               image: GradientText(
                 gradient: appcolor.gradient,
@@ -240,11 +268,26 @@ Widget customDrawer() {
               ),
             ),
             drawerWidget(
-              callback: () {},
+              callback: () {
+                Get.back();
+                Get.to(language());
+              },
               title: 'Language',
               image: Container(
                 child: Image(
                   image: AssetImage('assets/Vector (9).png'),
+                ),
+              ),
+            ),
+            drawerWidget(
+              callback: () {
+                Get.back();
+                Get.to(reset_password());
+              },
+              title: 'Change Password',
+              image: Container(
+                child: Image(
+                  image: AssetImage('assets/change.png'),
                 ),
               ),
             ),

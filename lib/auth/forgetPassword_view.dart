@@ -40,38 +40,43 @@ class _forgotPassword_viewState extends State<forgotPassword_view> {
                     gradient: appcolor.gradient,
                     widget: Text(
                       'Forgot Password',
-                      style: TextStyle(
-                        fontSize: 40,
-                      ),
+                      style:
+                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                customtextformfield(
-                  hinttext: 'Mobile Number',
-                  suffixIcon: Icon(Icons.call),
-                  newIcon: Icon(Icons.call),
-                  key_type: TextInputType.phone,
-                  maxLength: 10,
+                Container(
+                  height: Get.height * 0.055,
+                  child: customtextformfield(
+                    hinttext: 'Mobile Number',
+                    suffixIcon: Icon(Icons.call),
+                    newIcon: Icon(Icons.call),
+                    key_type: TextInputType.phone,
+                    maxLength: 10,
+                  ),
                 ),
-                customtextformfield(
-                  hinttext: 'Enter OTP*',
-                  suffixIcon: Container(
-                    child: Image(
-                        image: AssetImage(
-                      'assets/otp 1.png',
-                    )),
+                Container(
+                  height: Get.height * 0.055,
+                  child: customtextformfield(
+                    hinttext: 'Enter OTP*',
+                    suffixIcon: Container(
+                      child: Image(
+                          image: AssetImage(
+                        'assets/otp 1.png',
+                      )),
+                    ),
+                    newIcon: Container(
+                      child: Image(
+                          image: AssetImage(
+                        'assets/otp 1.png',
+                      )),
+                    ),
+                    key_type: TextInputType.phone,
+                    maxLength: 4,
                   ),
-                  newIcon: Container(
-                    child: Image(
-                        image: AssetImage(
-                      'assets/otp 1.png',
-                    )),
-                  ),
-                  key_type: TextInputType.phone,
-                  maxLength: 4,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,26 +107,26 @@ class _forgotPassword_viewState extends State<forgotPassword_view> {
                     ),
                   ],
                 ).paddingSymmetric(horizontal: 10),
-                blockButton(
-                  width: Get.width*0.35,
-                  
-                    widget: Text(
-                      'Submit',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    verticalPadding: 3),
-                SizedBox(
-                  height: Get.height * 0.08
-                ),
                 Container(
-                  height: Get.height*0.4,
+                  height: Get.height * 0.055,
+                  child: blockButton(
+                      width: Get.width * 0.35,
+                      widget: Text(
+                        'Submit',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            height: 1.2),
+                      ),
+                      verticalPadding: 3),
+                ),
+                SizedBox(height: Get.height * 0.08),
+                Container(
+                  height: Get.height * 0.4,
                   child: Image(
                     image: AssetImage(
-                      'assets/logo 2.png',
+                      'assets/image-png 1 (1).png',
                     ),
                     fit: BoxFit.fill,
                   ),

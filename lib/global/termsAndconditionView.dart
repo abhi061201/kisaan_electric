@@ -23,7 +23,7 @@ class _schemes_viewState extends State<schemes_view> {
         width: Get.width,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/rectangle.png'), fit: BoxFit.fill),
+              image: AssetImage('assets/rectangle.png'), fit: BoxFit.fill),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,

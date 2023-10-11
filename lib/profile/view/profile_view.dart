@@ -6,6 +6,7 @@ import 'package:kisaan_electric/global/blockButton.dart';
 import 'package:kisaan_electric/global/customAppBar.dart';
 import 'package:kisaan_electric/global/customtextformfield.dart';
 import 'package:kisaan_electric/global/gradient_text.dart';
+import 'package:kisaan_electric/global/image_pickerController.dart';
 import 'package:kisaan_electric/wallet/controller/wallte_controller.dart';
 
 class profile_view extends StatefulWidget {
@@ -16,8 +17,10 @@ class profile_view extends StatefulWidget {
 }
 
 class _profile_viewState extends State<profile_view> {
+  imagePickercontroller imagecontroller = Get.put(imagePickercontroller());
   wallet_controller controller = Get.put(wallet_controller());
   RxString groupValue = '1'.obs;
+  RxString profilegroupvalue='1'.obs;
   var value = null;
   @override
   Widget build(BuildContext context) {
@@ -152,48 +155,10 @@ class _profile_viewState extends State<profile_view> {
                 child: TabBarView(
                   controller: controller.tabcontroller,
                   children: [
-                    // personelInfo(),
-                    // TransferInfo(),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          'There are no transaction available',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          'There are no transaction available',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          'There are no transaction available',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      child: Center(
-                        child: Text(
-                          'There are no transaction available',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
+                    personelInfo(),
+                    TransferInfo(),
+                    Documents(),
+                    AdditionalInfo(),
                   ],
                 ),
               )
@@ -235,9 +200,9 @@ class _profile_viewState extends State<profile_view> {
                 children: [
                   Radio(
                     value: '1',
-                    groupValue: groupValue.value,
+                    groupValue: profilegroupvalue.value,
                     onChanged: (val) {
-                      groupValue.value = val.toString();
+                      profilegroupvalue.value = val.toString();
                     },
                     fillColor: MaterialStateColor.resolveWith(
                       (states) => appcolor.mixColor,
@@ -259,9 +224,9 @@ class _profile_viewState extends State<profile_view> {
                   ),
                   Radio(
                     value: '2',
-                    groupValue: groupValue.value,
+                    groupValue: profilegroupvalue.value,
                     onChanged: (val) {
-                      groupValue.value = val.toString();
+                      profilegroupvalue.value = val.toString();
                     },
                     fillColor: MaterialStateColor.resolveWith(
                       (states) => appcolor.mixColor,
@@ -752,6 +717,631 @@ class _profile_viewState extends State<profile_view> {
             ),
             SizedBox(
               height: Get.height * 0.02,
+            ),
+            blockButton(
+              borderradius: 15,
+              verticalPadding: 4,
+              width: Get.width * 0.35,
+              widget: Text(
+                'Update',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget Documents() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              'Aadhar Details',
+              style: TextStyle(
+                fontSize: 23,
+              ),
+            ),
+            Container(
+              height: Get.height * 0.055,
+              child: customtextformfield(
+                gradient: appcolor.voidGradient,
+                verticalContentPadding: 0,
+                hinttext: 'Aadhar Number',
+                hintTextColor: Colors.black,
+                bottomLineColor: Colors.black,
+                key_type: TextInputType.number,
+                newIcon: Container(
+                  height: Get.height * 0.025,
+                  child: Image(
+                    image: AssetImage('assets/acctDetails.png'),
+                  ),
+                ),
+              ),
+            ),
+            Wrap(
+              spacing: 10,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      height: Get.height * 0.18,
+                      width: Get.width * 0.2,
+                      child: Center(
+                          child: Text(
+                        'Upload\nAadhar\nCard',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                        textAlign: TextAlign.center,
+                      )),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      height: Get.height * 0.18,
+                      width: Get.width * 0.3,
+                      decoration: BoxDecoration(
+                        color: Color(0xffD9D9D9),
+                      ),
+                      child: Center(
+                        child: Image(
+                          image: AssetImage(
+                            'assets/add.png',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Front Side',
+                      style: TextStyle(
+                        fontSize: 19,
+                      ),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      height: Get.height * 0.18,
+                      width: Get.width * 0.3,
+                      decoration: BoxDecoration(
+                        color: Color(0xffD9D9D9),
+                      ),
+                      child: Center(
+                        child: Image(
+                          image: AssetImage(
+                            'assets/add.png',
+                          ),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Back Side',
+                      style: TextStyle(fontSize: 19, height: 0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            blockButton(
+              borderradius: 15,
+              verticalPadding: 4,
+              width: Get.width * 0.35,
+              widget: Text(
+                'Update',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            Text(
+              'Pan Details',
+              style: TextStyle(
+                fontSize: 23,
+              ),
+            ),
+            Container(
+              height: Get.height * 0.055,
+              child: customtextformfield(
+                gradient: appcolor.voidGradient,
+                verticalContentPadding: 0,
+                key_type: TextInputType.name,
+                hinttext: 'Pan Number',
+                hintTextColor: Colors.black,
+                bottomLineColor: Colors.black,
+                newIcon: Container(
+                  height: Get.height * 0.025,
+                  child: Image(
+                    image: AssetImage('assets/acctDetails.png'),
+                  ),
+                ),
+              ),
+            ),
+            Wrap(
+              spacing: 10,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Upload Pan card ',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      height: Get.height * 0.2,
+                      width: Get.width * 0.45,
+                      decoration: BoxDecoration(
+                        color: Color(0xffD9D9D9),
+                      ),
+                      child: Center(
+                        child: Image(
+                          image: AssetImage(
+                            'assets/add.png',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'GST Certificate\nUpload',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      width: 27,
+                    ),
+                    Container(
+                      height: Get.height * 0.2,
+                      width: Get.width * 0.45,
+                      decoration: BoxDecoration(
+                        color: Color(0xffD9D9D9),
+                      ),
+                      child: Center(
+                        child: Image(
+                          image: AssetImage(
+                            'assets/add.png',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ).marginOnly(top: 10),
+              ],
+            ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+            blockButton(
+              borderradius: 15,
+              verticalPadding: 4,
+              width: Get.width * 0.35,
+              widget: Text(
+                'Upload',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: Get.height * 0.02,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget AdditionalInfo() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              'Electrician Form',
+              style: TextStyle(fontSize: 23, height: 1),
+            ),
+            Text(
+              'kindly Fill the following Details',
+              style: TextStyle(
+                fontSize: 20,
+                height: 1,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 0),
+              height: Get.height * 0.05,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
+                color: Colors.transparent,
+              ),
+              child: Center(
+                child: DropdownButtonFormField(
+                  decoration: InputDecoration.collapsed(
+                    hintText: '1. Nationality',
+                    hintStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      height: 2.5,
+                    ),
+                  ),
+                  value: value,
+                  onChanged: (value) {},
+                  items: [
+                    DropdownMenuItem(
+                      child: Text(
+                        'Option 1',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      value: 1,
+                    ),
+                    DropdownMenuItem(
+                        child: Text(
+                          'Option 2',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                        value: 2),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 0),
+              height: Get.height * 0.05,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
+                color: Colors.transparent,
+              ),
+              child: Center(
+                child: DropdownButtonFormField(
+                  decoration: InputDecoration.collapsed(
+                    hintText: '2. Marital Status',
+                    hintStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      height: 2.5,
+                    ),
+                  ),
+                  value: value,
+                  onChanged: (value) {},
+                  items: [
+                    DropdownMenuItem(
+                      child: Text(
+                        'Option 1',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      value: 1,
+                    ),
+                    DropdownMenuItem(
+                        child: Text(
+                          'Option 2',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                        value: 2),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Text(
+                  'Children Info',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    height: 1,
+                  ),
+                ),
+              ],
+            ).paddingSymmetric(
+              horizontal: 10,
+            ),
+            Obx(
+              () => Container(
+                height: Get.height * 0.03,
+                child: Row(
+                  children: [
+                    Radio(
+                      value: '1',
+                      groupValue: groupValue.value,
+                      onChanged: (val) {
+                        groupValue.value = val.toString();
+                      },
+                      fillColor: MaterialStateColor.resolveWith(
+                        (states) => appcolor.mixColor,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        groupValue.value = '1';
+                      },
+                      child: Text(
+                        '1',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Radio(
+                      value: '2',
+                      groupValue: groupValue.value,
+                      onChanged: (val) {
+                        groupValue.value = val.toString();
+                      },
+                      fillColor: MaterialStateColor.resolveWith(
+                        (states) => appcolor.mixColor,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        groupValue.value = '2';
+                      },
+                      child: Text(
+                        '2',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                    Radio(
+                      value: '3',
+                      groupValue: groupValue.value,
+                      onChanged: (val) {
+                        groupValue.value = val.toString();
+                      },
+                      fillColor: MaterialStateColor.resolveWith(
+                        (states) => appcolor.mixColor,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        groupValue.value = '3';
+                      },
+                      child: Text(
+                        '3',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: Get.height * 0.055,
+                  width: Get.width * 0.45,
+                  child: customtextformfield(
+                      hinttext: 'Name',
+                      hintTextColor: Colors.black,
+                      bottomLineColor: Colors.black),
+                ),
+                Container(
+                  height: Get.height * 0.055,
+                  width: Get.width * 0.45,
+                  child: customtextformfield(
+                      key_type: TextInputType.datetime,
+                      hinttext: 'Birth Date',
+                      hintTextColor: Colors.black,
+                      newIcon: Container(
+                        height: Get.height * 0.025,
+                        child: Image(
+                          image: AssetImage('assets/birthdate.png'),
+                        ),
+                      ),
+                      bottomLineColor: Colors.black),
+                ),
+              ],
+            ),
+            Container(
+              height: Get.height * 0.055,
+              child: customtextformfield(
+                
+                verticalContentPadding: 0,
+                hinttext: '3. Study In',
+                hintTextColor: Colors.black,
+                bottomLineColor: Colors.black,
+                newIcon: Container(
+                  height: Get.height * 0.025,
+                  child: Image(
+                    image: AssetImage('assets/birthdate.png'),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 0),
+              height: Get.height * 0.05,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
+                color: Colors.transparent,
+              ),
+              child: Center(
+                child: DropdownButtonFormField(
+                  decoration: InputDecoration.collapsed(
+                    hintText: '4. Blood Group',
+                    hintStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      height: 2.5,
+                    ),
+                  ),
+                  value: value,
+                  onChanged: (value) {},
+                  items: [
+                    DropdownMenuItem(
+                      child: Text(
+                        'Option 1',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      value: 1,
+                    ),
+                    DropdownMenuItem(
+                        child: Text(
+                          'Option 2',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                        value: 2),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              padding: EdgeInsets.symmetric(horizontal: 0),
+              height: Get.height * 0.05,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.black,
+                  ),
+                ),
+                color: Colors.transparent,
+              ),
+              child: Center(
+                child: DropdownButtonFormField(
+                  decoration: InputDecoration.collapsed(
+                    hintText: '5. Total Work Experience',
+                    hintStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize: 22,
+                      height: 2.5,
+                    ),
+                  ),
+                  value: value,
+                  onChanged: (value) {},
+                  items: [
+                    DropdownMenuItem(
+                      child: Text(
+                        'Option 1',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                      value: 1,
+                    ),
+                    DropdownMenuItem(
+                        child: Text(
+                          'Option 2',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                        value: 2),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 0),
+              height: Get.height * 0.055,
+              child: customtextformfield(
+                verticalContentPadding: 0,
+                hinttext: '6. Language Known(Reading)',
+                hintTextColor: Colors.black,
+                bottomLineColor: Colors.black,
+              ),
+            ),
+            Container(
+              height: Get.height * 0.055,
+              child: customtextformfield(
+                verticalContentPadding: 0,
+                hinttext: '7. Language Known(Writing)',
+                hintTextColor: Colors.black,
+                bottomLineColor: Colors.black,
+              ),
+            ),
+            Container(
+              height: Get.height * 0.055,
+              child: customtextformfield(
+                verticalContentPadding: 0,
+                hinttext: '8. Language Known(Speaking)',
+                hintTextColor: Colors.black,
+                bottomLineColor: Colors.black,
+              ),
+            ),
+            Container(
+              height: Get.height * 0.055,
+              child: customtextformfield(
+                verticalContentPadding: 0,
+                hinttext: '9. Dealer/Partner Information',
+                hintTextColor: Colors.black,
+                bottomLineColor: Colors.black,
+              ),
             ),
             blockButton(
               borderradius: 15,

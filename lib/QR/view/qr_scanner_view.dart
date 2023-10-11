@@ -125,18 +125,6 @@ class _qr_scanner_viewState extends State<qr_scanner_view> {
                       width: Get.width * 0.3,
                       verticalPadding: 5,
                       widget: Text(
-                        'Scan Next',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    blockButton(
-                      callback: () {},
-                      width: Get.width * 0.3,
-                      verticalPadding: 5,
-                      widget: Text(
                         'Submit',
                         style: TextStyle(
                           color: Colors.white,

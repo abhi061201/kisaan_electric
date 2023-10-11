@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class wallet_controller  extends GetxController with GetSingleTickerProviderStateMixin{
+class productController  extends GetxController with GetSingleTickerProviderStateMixin{
 
   late TabController tabcontroller;
   
@@ -9,7 +9,7 @@ class wallet_controller  extends GetxController with GetSingleTickerProviderStat
   void onInit() {
     // TODO: implement onInit
 
-    tabcontroller = TabController(length: 4, vsync: this);
+    tabcontroller = TabController(length: 3, vsync: this);
     
     super.onInit();
   }

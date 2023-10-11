@@ -40,56 +40,72 @@ class _reset_passwordState extends State<reset_password> {
                     gradient: appcolor.gradient,
                     widget: Text(
                       'Change Password',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
+                      style:
+                          TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                customtextformfield(
-                  hinttext: 'Mobile Number*',
-                  suffixIcon: Icon(Icons.call),
-                  newIcon: Icon(Icons.call),
-                  key_type: TextInputType.phone,
-                  maxLength: 10,
-                ),
-                customtextformfield(
-                  hinttext: 'Old Password*',
-                  suffixIcon: Icon(Icons.lock_open),
-                  newIcon: Icon(
-                    Icons.lock,
+                Container(
+                  height: Get.height * 0.055,
+                  child: customtextformfield(
+                    hinttext: 'Mobile Number*',
+                    suffixIcon: Icon(Icons.call),
+                    newIcon: Icon(Icons.call),
+                    key_type: TextInputType.phone,
+                    maxLength: 10,
                   ),
-                  key_type: TextInputType.visiblePassword,
                 ),
-                customtextformfield(
-                  hinttext: 'New Password*',
-                  suffixIcon: Icon(Icons.lock),
-                  newIcon: Icon(Icons.lock),
-                  showPassword: true,
-                  key_type: TextInputType.visiblePassword,
-                ),
-                customtextformfield(
-                  hinttext: 'Confirm Password*',
-                  suffixIcon: Icon(Icons.lock_open),
-                  newIcon: Icon(
-                    Icons.lock,
-                  ),
-                  key_type: TextInputType.visiblePassword,
-                ),
-                blockButton(
-                    widget: Text(
-                      'Submit',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                      ),
+                Container(
+                  height: Get.height * 0.055,
+                  child: customtextformfield(
+                    hinttext: 'Old Password*',
+                    suffixIcon: Icon(Icons.lock_open),
+                    newIcon: Icon(
+                      Icons.lock,
                     ),
-                    verticalPadding: 6),
+                    key_type: TextInputType.visiblePassword,
+                  ),
+                ),
+                Container(
+                  height: Get.height * 0.055,
+                  child: customtextformfield(
+                    hinttext: 'New Password*',
+                    suffixIcon: Icon(Icons.lock),
+                    newIcon: Icon(Icons.lock),
+                    showPassword: true,
+                    key_type: TextInputType.visiblePassword,
+                  ),
+                ),
+                Container(
+                  height: Get.height * 0.055,
+                  child: customtextformfield(
+                    hinttext: 'Confirm Password*',
+                    suffixIcon: Icon(Icons.lock_open),
+                    newIcon: Icon(
+                      Icons.lock,
+                    ),
+                    key_type: TextInputType.visiblePassword,
+                  ),
+                ),
+                Container(
+                  height: Get.height * 0.055,
+                  child: blockButton(
+                      width: Get.width * 0.35,
+                      widget: Text(
+                        'Submit',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            height: 1.2),
+                      ),
+                      verticalPadding: 3),
+                ),
                 SizedBox(
-                  height: Get.height * 0.05,
+                  height: Get.height * 0.03,
                 ),
                 Container(
                   height: Get.height * 0.4,
