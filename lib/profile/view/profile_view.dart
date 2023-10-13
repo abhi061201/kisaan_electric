@@ -7,6 +7,7 @@ import 'package:kisaan_electric/global/customAppBar.dart';
 import 'package:kisaan_electric/global/customtextformfield.dart';
 import 'package:kisaan_electric/global/gradient_text.dart';
 import 'package:kisaan_electric/global/image_pickerController.dart';
+import 'package:kisaan_electric/profile/controller/profileController.dart';
 import 'package:kisaan_electric/wallet/controller/wallte_controller.dart';
 
 class profile_view extends StatefulWidget {
@@ -19,8 +20,15 @@ class profile_view extends StatefulWidget {
 class _profile_viewState extends State<profile_view> {
   imagePickercontroller imagecontroller = Get.put(imagePickercontroller());
   wallet_controller controller = Get.put(wallet_controller());
+  profilecontroller profileController = Get.put(profilecontroller());
   RxString groupValue = '1'.obs;
-  RxString profilegroupvalue='1'.obs;
+  RxString profilegroupvalue = '1'.obs;
+  String personalDate = '';
+  String AdditionalDate1 = '';
+  String AdditionalDate2 = '';
+  String AdditionalDate3 = '';
+
+
   var value = null;
   @override
   Widget build(BuildContext context) {
@@ -136,9 +144,13 @@ class _profile_viewState extends State<profile_view> {
                     color: Colors.black,
                     fontSize: 18,
                   ),
+                  padding: EdgeInsets.zero,
+                  // labelPadding: EdgeInsets.zero,
+                  indicatorPadding: EdgeInsets.zero,
                   controller: controller.tabcontroller,
                   tabs: [
                     Container(
+                      padding: EdgeInsets.zero,
                       child: Text(
                         'Personel Info',
                       ),
@@ -171,12 +183,15 @@ class _profile_viewState extends State<profile_view> {
 
   Widget personelInfo() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
       child: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                   verticalContentPadding: 0,
                   hinttext: 'Full Name',
@@ -196,62 +211,72 @@ class _profile_viewState extends State<profile_view> {
                   )),
             ),
             Obx(
-              () => Row(
-                children: [
-                  Radio(
-                    value: '1',
-                    groupValue: profilegroupvalue.value,
-                    onChanged: (val) {
-                      profilegroupvalue.value = val.toString();
-                    },
-                    fillColor: MaterialStateColor.resolveWith(
-                      (states) => appcolor.mixColor,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      groupValue.value = '1';
-                    },
-                    child: Text(
-                      'Male',
-                      style: TextStyle(
-                        fontSize: 20,
+              () => Container(
+                height: Get.height * 0.04,
+                child: Row(
+                  children: [
+                    Radio(
+                      value: '1',
+                      groupValue: profilegroupvalue.value,
+                      onChanged: (val) {
+                        profilegroupvalue.value = val.toString();
+                      },
+                      fillColor: MaterialStateColor.resolveWith(
+                        (states) => appcolor.mixColor,
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Radio(
-                    value: '2',
-                    groupValue: profilegroupvalue.value,
-                    onChanged: (val) {
-                      profilegroupvalue.value = val.toString();
-                    },
-                    fillColor: MaterialStateColor.resolveWith(
-                      (states) => appcolor.mixColor,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      groupValue.value = '2';
-                    },
-                    child: Text(
-                      'Female',
-                      style: TextStyle(
-                        fontSize: 20,
+                    InkWell(
+                      onTap: () {
+                        groupValue.value = '1';
+                      },
+                      child: Text(
+                        'Male',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Radio(
+                      value: '2',
+                      groupValue: profilegroupvalue.value,
+                      onChanged: (val) {
+                        profilegroupvalue.value = val.toString();
+                      },
+                      fillColor: MaterialStateColor.resolveWith(
+                        (states) => appcolor.mixColor,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        groupValue.value = '2';
+                      },
+                      child: Text(
+                        'Female',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
+                callback: () async {
+                  print('hii');
+                  personalDate =
+                      await profileController.showdatepicker(context);
+                  setState(() {});
+                },
+                readOnly: true,
                 key_type: TextInputType.datetime,
                 verticalContentPadding: 0,
-                hinttext: 'Birth Date',
+                hinttext: personalDate == '' ? 'Birth Date' : personalDate,
                 hintTextColor: Colors.black,
                 bottomLineColor: Colors.black,
                 newIcon: Container(
@@ -262,8 +287,9 @@ class _profile_viewState extends State<profile_view> {
                 ),
               ),
             ),
+            
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 key_type: TextInputType.number,
                 verticalContentPadding: 0,
@@ -279,7 +305,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 key_type: TextInputType.phone,
                 verticalContentPadding: 0,
@@ -295,7 +321,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 verticalContentPadding: 0,
                 hinttext: 'Email',
@@ -311,7 +337,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 verticalContentPadding: 0,
                 hinttext: 'Address',
@@ -353,6 +379,7 @@ class _profile_viewState extends State<profile_view> {
                 ),
               ],
             ),
+            
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
               padding: EdgeInsets.symmetric(horizontal: 0),
@@ -494,15 +521,19 @@ class _profile_viewState extends State<profile_view> {
             SizedBox(
               height: Get.height * 0.02,
             ),
-            blockButton(
-              borderradius: 15,
-              verticalPadding: 4,
-              width: Get.width * 0.35,
-              widget: Text(
-                'Update',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+            Container(
+              height: Get.height * 0.05,
+              child: blockButton(
+                callback: () {},
+                borderradius: 15,
+                verticalPadding: 0,
+                width: Get.width * 0.3,
+                widget: Text(
+                  'Update',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
@@ -521,9 +552,6 @@ class _profile_viewState extends State<profile_view> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 5,
-            ),
             Text(
               'Bank Account Details',
               style: TextStyle(
@@ -531,7 +559,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 gradient: appcolor.voidGradient,
                 verticalContentPadding: 0,
@@ -547,7 +575,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 gradient: appcolor.voidGradient,
                 verticalContentPadding: 0,
@@ -563,7 +591,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 gradient: appcolor.voidGradient,
                 verticalContentPadding: 0,
@@ -579,7 +607,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 verticalContentPadding: 0,
                 hinttext: 'Account Holder Name',
@@ -593,23 +621,20 @@ class _profile_viewState extends State<profile_view> {
                 ),
               ),
             ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            blockButton(
-              borderradius: 15,
-              verticalPadding: 4,
-              width: Get.width * 0.35,
-              widget: Text(
-                'Update',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+            Container(
+              height: Get.height * 0.05,
+              child: blockButton(
+                borderradius: 15,
+                verticalPadding: 0,
+                width: Get.width * 0.3,
+                widget: Text(
+                  'Update',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
             ),
             Text(
               'Paytm Wallet Detail',
@@ -618,7 +643,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 gradient: appcolor.voidGradient,
                 verticalContentPadding: 0,
@@ -646,7 +671,7 @@ class _profile_viewState extends State<profile_view> {
                 Column(
                   children: [
                     Container(
-                      height: Get.height * 0.18,
+                      height: Get.height * 0.15,
                       width: Get.width * 0.27,
                       decoration: BoxDecoration(
                         color: Color(0xffD9D9D9),
@@ -669,7 +694,7 @@ class _profile_viewState extends State<profile_view> {
                 Column(
                   children: [
                     Container(
-                      height: Get.height * 0.18,
+                      height: Get.height * 0.15,
                       width: Get.width * 0.27,
                       decoration: BoxDecoration(
                         color: Color(0xffD9D9D9),
@@ -693,7 +718,7 @@ class _profile_viewState extends State<profile_view> {
                 Column(
                   children: [
                     Container(
-                      height: Get.height * 0.18,
+                      height: Get.height * 0.15,
                       width: Get.width * 0.27,
                       decoration: BoxDecoration(
                         color: Color(0xffD9D9D9),
@@ -715,23 +740,20 @@ class _profile_viewState extends State<profile_view> {
                 ),
               ],
             ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            blockButton(
-              borderradius: 15,
-              verticalPadding: 4,
-              width: Get.width * 0.35,
-              widget: Text(
-                'Update',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+            Container(
+              height: Get.height * 0.05,
+              child: blockButton(
+                borderradius: 15,
+                verticalPadding: 0,
+                width: Get.width * 0.3,
+                widget: Text(
+                  'Update',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: Get.height * 0.02,
             ),
           ],
         ),
@@ -755,7 +777,7 @@ class _profile_viewState extends State<profile_view> {
               ),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 gradient: appcolor.voidGradient,
                 verticalContentPadding: 0,
@@ -842,15 +864,18 @@ class _profile_viewState extends State<profile_view> {
             SizedBox(
               height: Get.height * 0.02,
             ),
-            blockButton(
-              borderradius: 15,
-              verticalPadding: 4,
-              width: Get.width * 0.35,
-              widget: Text(
-                'Update',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+            Container(
+              height: Get.height * 0.05,
+              child: blockButton(
+                borderradius: 15,
+                verticalPadding: 0,
+                width: Get.width * 0.3,
+                widget: Text(
+                  'Update',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
@@ -859,12 +884,10 @@ class _profile_viewState extends State<profile_view> {
             ),
             Text(
               'Pan Details',
-              style: TextStyle(
-                fontSize: 23,
-              ),
+              style: TextStyle(fontSize: 23, height: 1),
             ),
             Container(
-              height: Get.height * 0.055,
+              height: Get.height * 0.045,
               child: customtextformfield(
                 gradient: appcolor.voidGradient,
                 verticalContentPadding: 0,
@@ -945,15 +968,18 @@ class _profile_viewState extends State<profile_view> {
             SizedBox(
               height: Get.height * 0.02,
             ),
-            blockButton(
-              borderradius: 15,
-              verticalPadding: 4,
-              width: Get.width * 0.35,
-              widget: Text(
-                'Upload',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+            Container(
+              height: Get.height * 0.05,
+              child: blockButton(
+                borderradius: 15,
+                verticalPadding: 0,
+                width: Get.width * 0.3,
+                widget: Text(
+                  'Update',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),
@@ -1092,9 +1118,7 @@ class _profile_viewState extends State<profile_view> {
                   ),
                 ),
               ],
-            ).paddingSymmetric(
-              horizontal: 10,
-            ),
+            ).paddingSymmetric(horizontal: 10),
             Obx(
               () => Container(
                 height: Get.height * 0.03,
@@ -1185,8 +1209,14 @@ class _profile_viewState extends State<profile_view> {
                   height: Get.height * 0.055,
                   width: Get.width * 0.45,
                   child: customtextformfield(
+                    readOnly: true,
+                    callback: ()async{
+                      AdditionalDate1 =
+                      await profileController.showdatepicker(context);
+                  setState(() {});
+                    },
                       key_type: TextInputType.datetime,
-                      hinttext: 'Birth Date',
+                      hinttext:AdditionalDate1==''? 'Birth Date':AdditionalDate1,
                       hintTextColor: Colors.black,
                       newIcon: Container(
                         height: Get.height * 0.025,
@@ -1198,10 +1228,10 @@ class _profile_viewState extends State<profile_view> {
                 ),
               ],
             ),
+            
             Container(
               height: Get.height * 0.055,
               child: customtextformfield(
-                
                 verticalContentPadding: 0,
                 hinttext: '3. Study In',
                 hintTextColor: Colors.black,
@@ -1343,15 +1373,18 @@ class _profile_viewState extends State<profile_view> {
                 bottomLineColor: Colors.black,
               ),
             ),
-            blockButton(
-              borderradius: 15,
-              verticalPadding: 4,
-              width: Get.width * 0.35,
-              widget: Text(
-                'Update',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
+            Container(
+              height: Get.height * 0.05,
+              child: blockButton(
+                borderradius: 15,
+                verticalPadding: 0,
+                width: Get.width * 0.3,
+                widget: Text(
+                  'Update',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 ),
               ),
             ),

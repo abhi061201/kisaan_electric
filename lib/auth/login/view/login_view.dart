@@ -39,7 +39,9 @@ class _login_viewState extends State<login_view> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10,),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 10,
+                      ),
                       width: Get.width * 0.35,
                       height: Get.height * 0.04,
                       decoration: BoxDecoration(
@@ -125,35 +127,6 @@ class _login_viewState extends State<login_view> {
                     ),
                   ],
                 ),
-
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.end,
-                //   children: [
-                //     Container(
-                //       decoration: BoxDecoration(
-                //         color: Color(0xffD9D9D9),
-                //         borderRadius: BorderRadius.circular(5),
-                //         border: Border.all(
-                //           color: Color(
-                //             0xffDD2B1C,
-                //           ),
-                //         ),
-                //       ),
-                //       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                //       child: Row(
-                //         children: [
-                //           Text(
-                //             'Language',
-                //             style: TextStyle(
-                //               fontSize: 20,
-                //             ),
-                //           ),
-                //           Icon(Icons.arrow_drop_down)
-                //         ],
-                //       ),
-                //     ),
-                //   ],
-                // ),
                 SizedBox(
                   height: 15,
                 ),
@@ -198,13 +171,12 @@ class _login_viewState extends State<login_view> {
                       }),
                 ),
                 Container(
-                  height: Get.height*0.055,
+                  height: Get.height * 0.055,
                   child: blockButton(
                     callback: () {
                       Get.to(Home_view());
                     },
                     width: Get.width * 0.3,
-                    
                     widget: Text(
                       'Login',
                       style: TextStyle(
@@ -213,7 +185,7 @@ class _login_viewState extends State<login_view> {
                           fontWeight: FontWeight.bold,
                           height: 1.2),
                     ),
-                    verticalPadding:3 ,
+                    verticalPadding: 3,
                   ),
                 ),
                 InkWell(

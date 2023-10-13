@@ -201,8 +201,9 @@ class _Home_viewState extends State<Home_view> {
                       bottom: 20,
                     ),
                     Wrap(
-                      spacing: 15,
-                      runSpacing: 15,
+                      alignment: WrapAlignment.spaceBetween,
+                      spacing: 25,
+                      runSpacing: 0,
                       children: [
                         customwidget(
                           assetimagepath: 'assets/scan 1.png',
@@ -251,11 +252,12 @@ class _Home_viewState extends State<Home_view> {
                       widget: Text(
                         'My Products',
                         style: TextStyle(
-                          fontSize: 28,
+                          fontSize: 26,
+                          height: 1,
                         ),
                       ),
                     ).paddingSymmetric(
-                      vertical: 10,
+                      vertical: 6,
                     ),
                     Wrap(
                       spacing: 10,
@@ -360,7 +362,7 @@ class _Home_viewState extends State<Home_view> {
                   ],
                 ).paddingSymmetric(
                   horizontal: 18,
-                  vertical: 10,
+                  vertical:6,
                 ),
               ],
             ),
@@ -382,9 +384,9 @@ Widget customwidget({
       children: [
         CircleAvatar(
           backgroundColor: appcolor.borderColor,
-          radius: 45,
+          radius: 40,
           child: CircleAvatar(
-            radius: 44,
+            radius: 39,
             backgroundColor: appcolor.greyColor,
             child: Container(
               child: Image(

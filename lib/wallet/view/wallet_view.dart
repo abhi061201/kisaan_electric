@@ -351,7 +351,7 @@ class _wallet_viewState extends State<wallet_view> {
                                   items: [
                                     DropdownMenuItem(
                                       child: Text(
-                                        'Bank',
+                                        'Google Pay',
                                         style: TextStyle(
                                           fontSize: 20,
                                         ),
@@ -366,6 +366,24 @@ class _wallet_viewState extends State<wallet_view> {
                                           ),
                                         ),
                                         value: 2),
+                                        DropdownMenuItem(
+                                      child: Text(
+                                        'Phone Pay',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      value: 3,
+                                    ),
+                                    DropdownMenuItem(
+                                      child: Text(
+                                        'Bank',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                        ),
+                                      ),
+                                      value: 4,
+                                    ),
                                   ],
                                 ),
                               ),

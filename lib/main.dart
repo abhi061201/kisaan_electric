@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kisaan_electric/History/History_view.dart';
@@ -17,6 +15,7 @@ import 'package:kisaan_electric/home/view/home_view.dart';
 import 'package:kisaan_electric/products/view/detailed_product_view.dart';
 import 'package:kisaan_electric/profile/view/profile_view.dart';
 import 'package:kisaan_electric/ranking/ranking.dart';
+import 'package:kisaan_electric/wallet/view/redemption_view.dart';
 
 void main() {
   runApp( Kisaan_Electric());

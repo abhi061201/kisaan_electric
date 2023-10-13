@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'appcolor.dart';
 import 'gradient_text.dart';
 
 Widget customtextformfield({
+  
+  bool ? readOnly,
   Color? hintTextColor,
   Color? bottomLineColor,
   String? hinttext,
@@ -25,6 +28,8 @@ Widget customtextformfield({
       horizontal: 10,
     ),
     child: TextFormField(
+      onTap: callback,
+      readOnly: readOnly==null?false:readOnly,
       enabled: enabled,
       cursorHeight: 28,
       cursorColor: hintTextColor == null ? appcolor.mixColor : hintTextColor,

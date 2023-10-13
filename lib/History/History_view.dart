@@ -84,16 +84,61 @@ class _historyViewState extends State<historyView> {
   }
 
   Widget points() {
-    return Expanded(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: appcolor.newRedColor,
+                ),
+                borderRadius: BorderRadius.circular(
+                  10,
+                ),
+              ),
+              width: Get.width * 0.6,
+              height: Get.height * 0.05,
+              child: customtextformfield(
+                enabled: false,
+                border: InputBorder.none,
+                bottomLineColor: Colors.transparent,
+                hinttext: 'Code Search',
+                suffixIcon: Icon(
+                  Icons.search,
+                ),
+                newIcon: Icon(
+                  Icons.search,
+                ),
+              ),
+            ),
+            Text(
+              'Total Points 100',
+              style: TextStyle(
+                fontSize: 20,
+                height: 1,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              'Filter :',
+              style: TextStyle(
+                fontSize: 20,
+                height: 1,
+              ),
+            ),
+            Container(
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: appcolor.newRedColor,
@@ -102,152 +147,150 @@ class _historyViewState extends State<historyView> {
                     10,
                   ),
                 ),
-                width: Get.width * 0.6,
-                height: Get.height * 0.05,
-                child: customtextformfield(
-                  enabled: false,
-                  border: InputBorder.none,
-                  bottomLineColor: Colors.transparent,
-                  hinttext: 'Code Search',
-                  suffixIcon: Icon(
-                    Icons.search,
-                  ),
-                  newIcon: Icon(
-                    Icons.search,
-                  ),
-                ),
-              ),
-              Text(
-                'Total Points 100',
-                style: TextStyle(
-                  fontSize: 20,
-                  height: 1,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                'Filter :',
-                style: TextStyle(
-                  fontSize: 20,
-                  height: 1,
-                ),
-              ),
-              Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: appcolor.newRedColor,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                  width: Get.width * 0.26,
-                  height: Get.height * 0.04,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Date From: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: appcolor.mixColor,
-                            height: 1,
-                          ),
+                width: Get.width * 0.26,
+                height: Get.height * 0.04,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Date From: ',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: appcolor.mixColor,
+                          height: 1,
                         ),
-                        GradientText(
-                          gradient: appcolor.gradient,
-                          widget: Icon(
-                            Icons.calendar_month,
-                            size: 16,
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
-              Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: appcolor.newRedColor,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                  width: Get.width * 0.26,
-                  height: Get.height * 0.04,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Date To: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: appcolor.mixColor,
-                            height: 1,
-                          ),
+                      ),
+                      GradientText(
+                        gradient: appcolor.gradient,
+                        widget: Icon(
+                          Icons.calendar_month,
+                          size: 16,
                         ),
-                        GradientText(
-                          gradient: appcolor.gradient,
-                          widget: Icon(
-                            Icons.calendar_month,
-                            size: 16,
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
-              blockButton(
-                verticalPadding: 3,
-                width: Get.width * 0.2,
-                widget: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: Colors.white,
+                      )
+                    ],
+                  ),
+                )),
+            Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: appcolor.newRedColor,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
                 ),
-              )
-            ],
+                width: Get.width * 0.26,
+                height: Get.height * 0.04,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Date To: ',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: appcolor.mixColor,
+                          height: 1,
+                        ),
+                      ),
+                      GradientText(
+                        gradient: appcolor.gradient,
+                        widget: Icon(
+                          Icons.calendar_month,
+                          size: 16,
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+            blockButton(
+              verticalPadding: 3,
+              width: Get.width * 0.2,
+              widget: Text(
+                'Submit',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: Get.height * 0.65,
+          width: Get.width,
+          child: Image(
+            image: AssetImage('assets/Table.png'),
+            fit: BoxFit.fill,
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: Get.height * 0.65,
-            width: Get.width,
-            child: Image(
-              image: AssetImage('assets/Table.png'),
-              fit: BoxFit.fill,
-            ),
-          ),
-        ],
-      ).paddingSymmetric(
-        horizontal: 10,
-      ),
+        ),
+      ],
+    ).paddingSymmetric(
+      horizontal: 10,
     );
   }
 
   Widget Transition() {
-    return Expanded(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: appcolor.newRedColor,
+                ),
+                borderRadius: BorderRadius.circular(
+                  10,
+                ),
+              ),
+              width: Get.width * 0.6,
+              height: Get.height * 0.05,
+              child: customtextformfield(
+                enabled: false,
+                border: InputBorder.none,
+                bottomLineColor: Colors.transparent,
+                hinttext: 'Transition Search',
+                suffixIcon: Icon(
+                  Icons.search,
+                ),
+                newIcon: Icon(
+                  Icons.search,
+                ),
+              ),
+            ),
+            Text(
+              'Total Points 100',
+              style: TextStyle(
+                fontSize: 20,
+                height: 1,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              'Filter :',
+              style: TextStyle(
+                fontSize: 20,
+                height: 1,
+              ),
+            ),
+            Container(
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: appcolor.newRedColor,
@@ -256,152 +299,150 @@ class _historyViewState extends State<historyView> {
                     10,
                   ),
                 ),
-                width: Get.width * 0.6,
-                height: Get.height * 0.05,
-                child: customtextformfield(
-                  enabled: false,
-                  border: InputBorder.none,
-                  bottomLineColor: Colors.transparent,
-                  hinttext: 'Transition Search',
-                  suffixIcon: Icon(
-                    Icons.search,
-                  ),
-                  newIcon: Icon(
-                    Icons.search,
-                  ),
-                ),
-              ),
-              Text(
-                'Total Points 100',
-                style: TextStyle(
-                  fontSize: 20,
-                  height: 1,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                'Filter :',
-                style: TextStyle(
-                  fontSize: 20,
-                  height: 1,
-                ),
-              ),
-              Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: appcolor.newRedColor,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                  width: Get.width * 0.26,
-                  height: Get.height * 0.04,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Date From: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: appcolor.mixColor,
-                            height: 1,
-                          ),
+                width: Get.width * 0.26,
+                height: Get.height * 0.04,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Date From: ',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: appcolor.mixColor,
+                          height: 1,
                         ),
-                        GradientText(
-                          gradient: appcolor.gradient,
-                          widget: Icon(
-                            Icons.calendar_month,
-                            size: 16,
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
-              Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: appcolor.newRedColor,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                  width: Get.width * 0.26,
-                  height: Get.height * 0.04,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Date To: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: appcolor.mixColor,
-                            height: 1,
-                          ),
+                      ),
+                      GradientText(
+                        gradient: appcolor.gradient,
+                        widget: Icon(
+                          Icons.calendar_month,
+                          size: 16,
                         ),
-                        GradientText(
-                          gradient: appcolor.gradient,
-                          widget: Icon(
-                            Icons.calendar_month,
-                            size: 16,
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
-              blockButton(
-                verticalPadding: 3,
-                width: Get.width * 0.2,
-                widget: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: Colors.white,
+                      )
+                    ],
+                  ),
+                )),
+            Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: appcolor.newRedColor,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
                 ),
-              )
-            ],
+                width: Get.width * 0.26,
+                height: Get.height * 0.04,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Date To: ',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: appcolor.mixColor,
+                          height: 1,
+                        ),
+                      ),
+                      GradientText(
+                        gradient: appcolor.gradient,
+                        widget: Icon(
+                          Icons.calendar_month,
+                          size: 16,
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+            blockButton(
+              verticalPadding: 3,
+              width: Get.width * 0.2,
+              widget: Text(
+                'Submit',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: Get.height * 0.65,
+          width: Get.width,
+          child: Image(
+            image: AssetImage('assets/Table.png'),
+            fit: BoxFit.fill,
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: Get.height * 0.65,
-            width: Get.width,
-            child: Image(
-              image: AssetImage('assets/Table.png'),
-              fit: BoxFit.fill,
-            ),
-          ),
-        ],
-      ).paddingSymmetric(
-        horizontal: 10,
-      ),
+        ),
+      ],
+    ).paddingSymmetric(
+      horizontal: 10,
     );
   }
 
   Widget Order() {
-    return Expanded(
-      child: Column(
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: appcolor.newRedColor,
+                ),
+                borderRadius: BorderRadius.circular(
+                  10,
+                ),
+              ),
+              width: Get.width * 0.6,
+              height: Get.height * 0.05,
+              child: customtextformfield(
+                enabled: false,
+                border: InputBorder.none,
+                bottomLineColor: Colors.transparent,
+                hinttext: 'Product Search',
+                suffixIcon: Icon(
+                  Icons.search,
+                ),
+                newIcon: Icon(
+                  Icons.search,
+                ),
+              ),
+            ),
+            Text(
+              'Total Points 100',
+              style: TextStyle(
+                fontSize: 20,
+                height: 1,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              'Filter :',
+              style: TextStyle(
+                fontSize: 20,
+                height: 1,
+              ),
+            ),
+            Container(
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: appcolor.newRedColor,
@@ -410,138 +451,91 @@ class _historyViewState extends State<historyView> {
                     10,
                   ),
                 ),
-                width: Get.width * 0.6,
-                height: Get.height * 0.05,
-                child: customtextformfield(
-                  enabled: false,
-                  border: InputBorder.none,
-                  bottomLineColor: Colors.transparent,
-                  hinttext: 'Product Search',
-                  suffixIcon: Icon(
-                    Icons.search,
-                  ),
-                  newIcon: Icon(
-                    Icons.search,
-                  ),
-                ),
-              ),
-              Text(
-                'Total Points 100',
-                style: TextStyle(
-                  fontSize: 20,
-                  height: 1,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                'Filter :',
-                style: TextStyle(
-                  fontSize: 20,
-                  height: 1,
-                ),
-              ),
-              Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: appcolor.newRedColor,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                  width: Get.width * 0.26,
-                  height: Get.height * 0.04,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Date From: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: appcolor.mixColor,
-                            height: 1,
-                          ),
+                width: Get.width * 0.26,
+                height: Get.height * 0.04,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Date From: ',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: appcolor.mixColor,
+                          height: 1,
                         ),
-                        GradientText(
-                          gradient: appcolor.gradient,
-                          widget: Icon(
-                            Icons.calendar_month,
-                            size: 16,
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
-              Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: appcolor.newRedColor,
-                    ),
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
-                  ),
-                  width: Get.width * 0.26,
-                  height: Get.height * 0.04,
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Date To: ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: appcolor.mixColor,
-                            height: 1,
-                          ),
+                      ),
+                      GradientText(
+                        gradient: appcolor.gradient,
+                        widget: Icon(
+                          Icons.calendar_month,
+                          size: 16,
                         ),
-                        GradientText(
-                          gradient: appcolor.gradient,
-                          widget: Icon(
-                            Icons.calendar_month,
-                            size: 16,
-                          ),
-                        )
-                      ],
-                    ),
-                  )),
-              blockButton(
-                verticalPadding: 3,
-                width: Get.width * 0.2,
-                widget: Text(
-                  'Submit',
-                  style: TextStyle(
-                    color: Colors.white,
+                      )
+                    ],
+                  ),
+                )),
+            Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: appcolor.newRedColor,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
                 ),
-              )
-            ],
+                width: Get.width * 0.26,
+                height: Get.height * 0.04,
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Date To: ',
+                        style: TextStyle(
+                          fontSize: 17,
+                          color: appcolor.mixColor,
+                          height: 1,
+                        ),
+                      ),
+                      GradientText(
+                        gradient: appcolor.gradient,
+                        widget: Icon(
+                          Icons.calendar_month,
+                          size: 16,
+                        ),
+                      )
+                    ],
+                  ),
+                )),
+            blockButton(
+              verticalPadding: 3,
+              width: Get.width * 0.2,
+              widget: Text(
+                'Submit',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            )
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          height: Get.height * 0.65,
+          width: Get.width,
+          child: Image(
+            image: AssetImage('assets/Table.png'),
+            fit: BoxFit.fill,
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: Get.height * 0.65,
-            width: Get.width,
-            child: Image(
-              image: AssetImage('assets/Table.png'),
-              fit: BoxFit.fill,
-            ),
-          ),
-        ],
-      ).paddingSymmetric(
-        horizontal: 10,
-      ),
+        ),
+      ],
+    ).paddingSymmetric(
+      horizontal: 10,
     );
   }
 }
